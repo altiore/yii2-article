@@ -1,0 +1,17 @@
+{
+    "name": "altiore/yii2-article",
+    "description": "Article Yii2 Extension",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Razzwan",
+            "email": "razvanlomov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0",
+        "yiisoft/yii2": "2.0.8"
+    }
+}
