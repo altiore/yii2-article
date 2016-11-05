@@ -3,6 +3,8 @@
 namespace altiore\article\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%post}}".
@@ -14,7 +16,7 @@ use Yii;
  * @property integer  $updated_at
  * @property PostType $type
  */
-class Post extends \yii\db\ActiveRecord
+class Post extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -30,8 +32,8 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'resource_id', 'created_at', 'updated_at'], 'integer'],
-            [['created_at', 'updated_at'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['type_id', 'resource_id'], 'integer'],
             [
                 ['type_id'],
                 'exist',
@@ -53,6 +55,16 @@ class Post extends \yii\db\ActiveRecord
             'resource_id' => Yii::t('app', 'Resource ID'),
             'created_at'  => Yii::t('app', 'Created At'),
             'updated_at'  => Yii::t('app', 'Updated At'),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
         ];
     }
 

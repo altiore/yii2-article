@@ -48,6 +48,14 @@ class PostType extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return array
+     */
+    public static function column()
+    {
+        return static::find()->select(['name'])->indexBy('id')->column();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getPosts()

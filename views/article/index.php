@@ -12,9 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a(Yii::t('app', 'Create Article'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -26,11 +23,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'text:ntext',
-            'creator_id',
-            'created_at',
-            // 'updater_id',
-            // 'updated_at',
+            [
+                'attribute' => 'creator_id',
+                'value' => 'creator.fullName'
+            ],
+            'created_at:datetime',
+            [
+                'attribute' => 'updater_id',
+                'value' => 'updater.fullName'
+            ],
+            'updated_at:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
